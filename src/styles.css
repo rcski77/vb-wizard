@@ -53,6 +53,7 @@ nav a {
     border-radius: 4px;
     font-size: 1rem;
     font-weight: bold;
+    cursor: pointer;
   }
   button:hover {
     background-color: orangered;

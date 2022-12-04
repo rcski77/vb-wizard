@@ -7,6 +7,7 @@
     <p class="labels"># Courts</p>
     <p class="labels">AM</p>
     <p class="labels">PM</p>
+    <p class="labels">&nbsp;&nbsp;</p>
   </li>
   <div cdkDropList class="division-list" (cdkDropListDropped)="drop($event)">
     <li class="division-box" *ngFor="let division of divisions; let i = index" cdkDrag>
@@ -15,15 +16,17 @@
         <p id="courts">{{ calculateCourts(division.teams) }}</p>
         <p id="courts" (click)="setAM(i)">{{division.AM}}</p>
         <p id="courts" (click)="setPM(i)">{{division.PM}}</p>
+        <img src="..\assets\delete.png" (click)="delete(i)"/>
       </li>
   </div>
   <hr>
   <li class ="totals">
     <p class="labels">TOTAL</p>
-    <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalTeams() }}</p>
+    <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalTeams() }}</p>
     <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalCourts() }}</p>
-    <p class="labels">{{ totalAMCourts() }}</p>
-    <p class="labels">{{ totalPMCourts() }}</p>
+    <p class="labels">&nbsp;&nbsp;&nbsp;{{ totalAMCourts() }}</p>
+    <p class="labels">&nbsp;&nbsp;&nbsp;{{ totalPMCourts() }}</p>
+    <p class="labels"></p>
   </li>
 </ul>
 

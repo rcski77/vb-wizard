@@ -72,6 +72,10 @@ export class DivisionMainComponent {
     this.divisions.push({ name: '', teams: 0, courts: 0, AM: 0, PM: 0 });
   }
 
+  delete(index: number): void {
+    this.divisions.splice(index, 1);
+  }
+
   drop(event: CdkDragDrop<string[]>) {
     moveItemInArray(this.divisions, event.previousIndex, event.currentIndex);
   }
