@@ -1,1 +1,39 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  h1 {
+    color: #264D73;
+    font-size: 3rem;
+  }
+  body {
+    padding: .5rem;
+    max-width: 1000px;
+    margin: auto;
+  }
+
+  /* Navigation link styles */
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+nav a {
+    padding: 10px 20px;
+    text-decoration: none;
+    margin-right: 10px;
+    margin-top: 0px;
+    display: inline-block;
+    background-color: #e8e8e8;
+    color: #3d3d3d;
+    border-radius: 4px;
+  }
+  
+  nav a:hover {
+    color: white;
+    background-color:  orangered;
+  }
+  nav a.active {
+    background-color: black;
+    color: white;
+  }
