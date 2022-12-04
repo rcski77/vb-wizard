@@ -47,7 +47,7 @@
 }
 
 .divisions input {
-  width: 8em;
+  width: 7em;
   flex: 0.9;
   margin: 0 20px;
 }
@@ -61,12 +61,10 @@
 }
 
 .labels {
-  width: 9em;
   align-self: center;
   font-size: 1.25em;
   font-weight: bold;
   text-align: center;
-  flex: 1;
 }
 
 .buttons {
@@ -81,4 +79,11 @@
 
 .totals p {
   color: white;
+}
+
+#message {
+  align-self: center;
+  font-size: 1.25em;
+  font-weight: bold;
+  text-align: center;
 }

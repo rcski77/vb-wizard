@@ -5,22 +5,30 @@
     <p class="labels">Division Name</p>
     <p class="labels"># Teams</p>
     <p class="labels"># Courts</p>
+    <p class="labels">AM</p>
+    <p class="labels">PM</p>
   </li>
   <div cdkDropList class="division-list" (cdkDropListDropped)="drop($event)">
-    <li class="division-box" *ngFor="let division of divisions" cdkDrag>
+    <li class="division-box" *ngFor="let division of divisions; let i = index" cdkDrag>
         <input id="name" [(ngModel)]="division.name" placeholder="name" />
         <input id="teams" [(ngModel)]="division.teams" placeholder="0" />
         <p id="courts">{{ calculateCourts(division.teams) }}</p>
+        <p id="courts" (click)="setAM(i)">{{division.AM}}</p>
+        <p id="courts" (click)="setPM(i)">{{division.PM}}</p>
       </li>
   </div>
   <hr>
   <li class ="totals">
     <p class="labels">TOTAL</p>
-    <p class="labels">{{ totalTeams() }}</p>
-    <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalCourts() }}</p>
+    <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalTeams() }}</p>
+    <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalCourts() }}</p>
+    <p class="labels">{{ totalAMCourts() }}</p>
+    <p class="labels">{{ totalPMCourts() }}</p>
   </li>
 </ul>
 
 <div class="buttons">
   <button (click)="addDivision()">Add Division</button>
 </div>
+
+<p id="message">Click values to assign courts to AM or PM</p>
