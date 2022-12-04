@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 
 import { Division } from '../division';
 import { DivisionInfoService } from '../division-info.service';
@@ -40,5 +41,15 @@ export class DivisionMainComponent {
       total += Math.ceil(element.teams / 4);
     });
     return total;
+  }
+
+  addDivision(): void {
+    this.divisions.push(
+      {name: "", teams: 0, courts: 0}
+    );
+  }
+
+  drop(event: CdkDragDrop<string[]>) {
+    moveItemInArray(this.divisions, event.previousIndex, event.currentIndex);
   }
 }

@@ -1,19 +1,26 @@
 <h2>Division Information</h2>
 
 <ul class="divisions">
-    <li>
-        <span>Division Name</span>
-        <span># Teams</span>
-        <span># Courts</span>
-    </li>
-    <li *ngFor="let division of divisions">
-        <input id="name" [(ngModel)]="division.name" placeholder="name">
-        <input id="teams" [(ngModel)]=division.teams placeholder=0>
-        <span>{{ calculateCourts(division.teams) }}</span>
-    </li>
-    <li>
-        <span>TOTAL</span>
-        <span>{{ totalTeams() }}</span>
-        <span>{{ totalCourts() }}</span>
-    </li>
+  <li>
+    <p class="labels">Division Name</p>
+    <p class="labels"># Teams</p>
+    <p class="labels"># Courts</p>
+  </li>
+  <div cdkDropList class="division-list" (cdkDropListDropped)="drop($event)">
+    <li class="division-box" *ngFor="let division of divisions" cdkDrag>
+        <input id="name" [(ngModel)]="division.name" placeholder="name" />
+        <input id="teams" [(ngModel)]="division.teams" placeholder="0" />
+        <p id="courts">{{ calculateCourts(division.teams) }}</p>
+      </li>
+  </div>
+  <hr>
+  <li class ="totals">
+    <p class="labels">TOTAL</p>
+    <p class="labels">{{ totalTeams() }}</p>
+    <p class="labels">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ totalCourts() }}</p>
+  </li>
 </ul>
+
+<div class="buttons">
+  <button (click)="addDivision()">Add Division</button>
+</div>

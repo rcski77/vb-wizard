@@ -40,7 +40,25 @@ nav a {
     color: white;
     background-color:  orangered;
   }
+
   nav a.active {
     background-color: black;
     color: white;
+  }
+/* Button style links */
+  button {
+    margin-top: 20px;
+    background-color: #eee;
+    padding: 1rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: bold;
+  }
+  button:hover {
+    background-color: orangered;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
   }
