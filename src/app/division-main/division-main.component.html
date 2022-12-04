@@ -1,1 +1,19 @@
-<p>division-main works!</p>
+<h2>Division Information</h2>
+
+<ul class="divisions">
+    <li>
+        <span>Division Name</span>
+        <span># Teams</span>
+        <span># Courts</span>
+    </li>
+    <li *ngFor="let division of divisions">
+        <input id="name" [(ngModel)]="division.name" placeholder="name">
+        <input id="teams" [(ngModel)]=division.teams placeholder=0>
+        <span>{{ calculateCourts(division.teams) }}</span>
+    </li>
+    <li>
+        <span>TOTAL</span>
+        <span>{{ totalTeams() }}</span>
+        <span>{{ totalCourts() }}</span>
+    </li>
+</ul>
