@@ -1,21 +1,74 @@
-<p>bracket-main works!</p>
+<h2>Bracket Creator</h2>
+
 <button (click)="generateBracket(4)">4 Team Bracket</button>
+<span>&nbsp;</span>
+<button (click)="generateBracket(8)">8 Team Bracket</button>
+<span>&nbsp;</span>
+<button (click)="generateBracket(16)">16 Team Bracket</button>
 
-<table border="1">
-    <tr *ngFor="let row in bracket.row">{{ row }}
-        <td *ngFor="let column in bracket.column">{{ column }}</td>
-    </tr>
-</table>
+<hr />
 
-<hr> 
+<div class="alt-bracket">
+    <div class="cols" *ngIf="bracketSize.columns >= 4">
+        <ng-container *ngFor="let team of teams; let i = index">
+            <ng-container *ngIf="i % 2 == 0">
+                <div class="match-box">
+                    <div class="team-box" *ngIf="teams[i].active">
+                        {{ teams[i].name }}
+                    </div>
+                    <div class="team-box" *ngIf="teams[i+1].active">
+                        {{ teams[i+1].name }}
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>     
+    </div>
+    <div class="cols" *ngIf="bracketSize.columns >= 3">
+        <ng-container *ngFor="let team of col3; let i = index">
+            <ng-container *ngIf="i % 2 == 0">
+                <div class="match-box">
+                    <div class="team-box" *ngIf="teams[i].active">
+                        {{ teams[i].name }}
+                    </div>
+                    <div class="team-box" *ngIf="teams[i+1].active">
+                        {{ teams[i+1].name }}
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="cols" *ngIf="bracketSize.columns >= 2">
+        <ng-container *ngFor="let team of col2; let i = index">
+            <ng-container *ngIf="i % 2 == 0">
+                <div class="match-box">
+                    <div class="team-box" *ngIf="teams[i].active">
+                        {{ teams[i].name }}
+                    </div>
+                    <div class="team-box" *ngIf="teams[i+1].active">
+                        {{ teams[i+1].name }}
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+    <div class="cols" *ngIf="bracketSize.columns >= 1">
+        <ng-container *ngFor="let team of col1; let i = index">
+            <ng-container *ngIf="i % 2 == 0">
+                <div class="match-box">
+                    <div class="team-box" *ngIf="teams[i].active">
+                        {{ teams[i].name }}
+                    </div>
+                    <div class="team-box" *ngIf="teams[i+1].active">
+                        {{ teams[i+1].name }}
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>
 
-<table border="1">
-    <tr>
-        <td>Test</td>
-        <td>2</td>
-    </tr>
-    <tr>
-        <td>Test</td>
-        <td>2</td>
-    </tr>
-</table>
+<hr />
+
+<p>Rows: {{ bracketSize.rows }}</p>
+<p>Cols: {{ bracketSize.columns }}</p>
+<p>Teams: {{ bracketSize.teams }}</p>
