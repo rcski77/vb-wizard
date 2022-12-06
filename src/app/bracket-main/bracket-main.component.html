@@ -1,1 +1,21 @@
 <p>bracket-main works!</p>
+<button (click)="generateBracket(4)">4 Team Bracket</button>
+
+<table border="1">
+    <tr *ngFor="let row in bracket.row">{{ row }}
+        <td *ngFor="let column in bracket.column">{{ column }}</td>
+    </tr>
+</table>
+
+<hr> 
+
+<table border="1">
+    <tr>
+        <td>Test</td>
+        <td>2</td>
+    </tr>
+    <tr>
+        <td>Test</td>
+        <td>2</td>
+    </tr>
+</table>
