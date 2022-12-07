@@ -12,48 +12,52 @@
     <div class="cols" *ngIf="bracketSize.columns >= 4">
         <ng-container *ngFor="let match of col4; let i = index">
                 <div class="match-box">
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col4[i], 1)" [ngClass]="{'team-win': col4[i].team1 === col4[i].winner}">
                         {{ match.team1.name}}
                     </div>
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col4[i], 2)" [ngClass]="{'team-win': col4[i].team2 === col4[i].winner}">
                         {{ match.team2.name}}
                     </div>
+                    <p class="match-label">Match {{ col4[i].id }}</p>
                 </div>
         </ng-container>     
     </div>
     <div class="cols" *ngIf="bracketSize.columns >= 3">
         <ng-container *ngFor="let match of col3; let i = index">
                 <div class="match-box">
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col3[i], 1)" [ngClass]="{'team-win': col3[i].team1 === col3[i].winner}">
                         {{ match.team1.name}}
                     </div>
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col3[i], 2)" [ngClass]="{'team-win': col3[i].team2 === col3[i].winner}">
                         {{ match.team2.name}}
                     </div>
+                    <p class="match-label">Match {{ col3[i].id }}</p>
                 </div>
         </ng-container>
     </div>
     <div class="cols" *ngIf="bracketSize.columns >= 2">
         <ng-container *ngFor="let match of col2; let i = index">
                 <div class="match-box">
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col2[i], 1)" [ngClass]="{'team-win': col2[i].team1 === col2[i].winner}">
                         {{ match.team1.name}}
                     </div>
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col2[i], 2)" [ngClass]="{'team-win': col2[i].team2 === col2[i].winner}">
                         {{ match.team2.name}}
                     </div>
+                    <p class="match-label">Match {{ col2[i].id }}</p>
                 </div>
         </ng-container>
     </div>
     <div class="cols" *ngIf="bracketSize.columns >= 1">
         <ng-container *ngFor="let match of col1; let i = index">
                 <div class="match-box">
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col1[i], 1)" [ngClass]="{'team-win': col1[i].team1 === col1[i].winner}">
                         {{ match.team1.name}}
                     </div>
-                    <div class="team-box">
+                    <div class="team-box" (click)="setWinner(col1[i], 2)" [ngClass]="{'team-win': col1[i].team2 === col1[i].winner}">
                         {{ match.team2.name}}
                     </div>
+                    <p class="match-label">Match {{ col1[i].id }}</p>
                 </div>
         </ng-container>
     </div>
@@ -61,6 +65,5 @@
 
 <hr />
 
-<p>Rows: {{ bracketSize.rows }}</p>
 <p>Cols: {{ bracketSize.columns }}</p>
 <p>Teams: {{ bracketSize.teams }}</p>

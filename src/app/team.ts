@@ -6,7 +6,7 @@ export interface Team {
 
 export interface Match {
     id: number;
-    team1: Team;
-    team2: Team;
+    team1: any;
+    team2: any;
     winner: any;
 }
