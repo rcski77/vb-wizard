@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Team } from '../team';
+import { Match, Team } from '../team';
 import { TEAMS } from '../team-list';
 
 @Component({
@@ -15,11 +15,14 @@ export class BracketMainComponent implements OnInit {
     columns: 0,
   };
 
-  teams: Team[] = TEAMS;
-  col1: Team[] = [];
-  col2: Team[] = [];
-  col3: Team[] = [];
-  col4: Team[] = [];
+  teams: Team[] = TEAMS; //create array of default team list
+
+  col1: Match[] = []; //1 match
+  col2: Match[] = []; //2 matches
+  col3: Match[] = []; //4 matches
+  col4: Match[] = []; //8 matches
+
+  matches: Match[] = []; //create array to store matches
 
   generateBracket(size: number): void {
     this.setInactive(); //reset bracket first
@@ -41,6 +44,8 @@ export class BracketMainComponent implements OnInit {
       this.teams[i].active = true;
     }
 
+    this.generateMatches(size);
+
     this.setColumns();
   } //end generate bracket
 
@@ -50,23 +55,37 @@ export class BracketMainComponent implements OnInit {
     }
   }
 
+  generateMatches(size: number): void {
+    this.matches = []; //clear array
+
+    for (let i = 0; i < size / 2; i++) {
+      let temp: Match = {
+        id: i,
+        team1: this.teams[2 * i],
+        team2: this.teams[2 * i + 1],
+        winner: null
+      }
+      this.matches.push(temp);
+    }
+  }
+
   setColumns(): void {
     this.col1 = []; //clear array
     this.col2 = []; //clear array
     this.col3 = []; //clear array
     this.col4 = []; //clear array
 
-    for (let i = 0; i < 16; i++) {
-      this.col4.push(this.teams[i]);
-    }
     for (let i = 0; i < 8; i++) {
-      this.col3.push(this.teams[i]);
+      this.col4.push(this.matches[i]);
     }
     for (let i = 0; i < 4; i++) {
-      this.col2.push(this.teams[i]);
+      this.col3.push(this.matches[i]);
     }
     for (let i = 0; i < 2; i++) {
-      this.col1.push(this.teams[i]);
+      this.col2.push(this.matches[i]);
+    }
+    for (let i = 0; i < 1; i++) {
+      this.col1.push(this.matches[i]);
     }
   }
 
