@@ -9,7 +9,7 @@ import { DivisionInfoService } from '../division-info.service';
   templateUrl: './division-main.component.html',
   styleUrls: ['./division-main.component.css'],
 })
-export class DivisionMainComponent {
+export class DivisionMainComponent implements OnInit {
   divisions: Division[] = [];
 
   constructor(private divisionService: DivisionInfoService) {}
