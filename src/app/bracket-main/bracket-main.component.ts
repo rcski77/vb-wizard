@@ -65,14 +65,6 @@ export class BracketMainComponent implements OnInit {
   generateMatches(size: number): void {
     this.matches = []; //clear array
 
-    // for (let i = 0; i < size / 2; i++) {
-    //   let temp: Match = {
-    //     id: i + 1,
-    //     team1: this.teams[2 * i],
-    //     team2: this.teams[2 * i + 1],
-    //     winner: null,
-    //   };
-
       for (let i = 0; i < size / 2; i++) {
         let temp: Match = {
           id: i + 1,
@@ -119,7 +111,7 @@ export class BracketMainComponent implements OnInit {
   } //end setColumns
 
   setWinner(match: Match, team: number): void {
-    let index = match.id;
+    let matchNum = match.id;
 
     if (team == 1) {
       match.winner = match.team1;
@@ -128,11 +120,11 @@ export class BracketMainComponent implements OnInit {
     }
 
     //set winner of subsequent matches
-    if (index % 2 == 1) {
-      this.matches[Math.ceil((index + this.bracketSize.teams) / 2) - 1].team1 =
+    if (matchNum % 2 == 1) {
+      this.matches[Math.ceil((matchNum + this.bracketSize.teams) / 2) - 1].team1 =
         match.winner;
     } else {
-      this.matches[Math.floor((index + this.bracketSize.teams) / 2) - 1].team2 =
+      this.matches[Math.floor((matchNum + this.bracketSize.teams) / 2) - 1].team2 =
         match.winner;
     }
   } //end setWinner
