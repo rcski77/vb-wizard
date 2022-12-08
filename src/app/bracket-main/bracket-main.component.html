@@ -1,10 +1,12 @@
 <h2>Bracket Creator</h2>
 
-<button (click)="generateBracket(4)">4 Team Bracket</button>
-<span>&nbsp;</span>
-<button (click)="generateBracket(8)">8 Team Bracket</button>
-<span>&nbsp;</span>
-<button (click)="generateBracket(16)">16 Team Bracket</button>
+<div class="button-brackets">
+    <button (click)="generateBracket(4)" [ngClass]="{'selected': bracketSize.teams == 4}">4 Team Bracket</button>
+    <span>&nbsp;</span>
+    <button (click)="generateBracket(8)"[ngClass]="{'selected': bracketSize.teams == 8}">8 Team Bracket</button>
+    <span>&nbsp;</span>
+    <button (click)="generateBracket(16)" [ngClass]="{'selected': bracketSize.teams == 16}">16 Team Bracket</button>
+</div>
 
 <hr />
 

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Match, Team } from '../team';
-import { TEAMS } from '../team-list';
 import { TeamsService } from '../teams.service';
 
 @Component({
@@ -66,13 +65,22 @@ export class BracketMainComponent implements OnInit {
   generateMatches(size: number): void {
     this.matches = []; //clear array
 
-    for (let i = 0; i < size / 2; i++) {
-      let temp: Match = {
-        id: i + 1,
-        team1: this.teams[2 * i],
-        team2: this.teams[2 * i + 1],
-        winner: null,
-      };
+    // for (let i = 0; i < size / 2; i++) {
+    //   let temp: Match = {
+    //     id: i + 1,
+    //     team1: this.teams[2 * i],
+    //     team2: this.teams[2 * i + 1],
+    //     winner: null,
+    //   };
+
+      for (let i = 0; i < size / 2; i++) {
+        let temp: Match = {
+          id: i + 1,
+          team1: this.teams[i],
+          team2: this.teams[size - i - 1],
+          winner: null,
+        };
+
       this.matches.push(temp);
     }
 
