@@ -12,7 +12,7 @@
   <div cdkDropList class="division-list" (cdkDropListDropped)="drop($event)">
     <li class="division-box" *ngFor="let division of divisions; let i = index" cdkDrag>
         <input id="name" [(ngModel)]="division.name" placeholder="name" />
-        <input id="teams" [(ngModel)]="division.teams" placeholder="0" />
+        <input type="number" min="0" onkeyup="if(this.value < 0){this.value = 0}" id="teams" [(ngModel)]="division.teams" placeholder="0" />
         <p id="courts">{{ calculateCourts(division.teams) }}</p>
         <p id="courts" (click)="setAM(i)">{{division.AM}}</p>
         <p id="courts" (click)="setPM(i)">{{division.PM}}</p>
