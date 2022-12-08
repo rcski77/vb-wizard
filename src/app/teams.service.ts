@@ -15,4 +15,5 @@ export class TeamsService {
     const teams = of(TEAMS);
     return teams;
   }
+
 }

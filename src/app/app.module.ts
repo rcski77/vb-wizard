@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { DivisionMainComponent } from './division-main/division-main.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BracketMainComponent } from './bracket-main/bracket-main.component';
+import { TeamsComponent } from './teams/teams.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     DivisionMainComponent,
-    BracketMainComponent
+    BracketMainComponent,
+    TeamsComponent
   ],
   imports: [
     BrowserModule,

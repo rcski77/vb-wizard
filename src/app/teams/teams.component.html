@@ -1,0 +1,6 @@
+<h2>Team List</h2>
+
+<div class="team-box" *ngFor="let team of teams; let i = index">
+  <span class="badge"><label for="name">Seed {{ i + 1}} </label></span>
+  <span class="name"><input id="name" [(ngModel)]="team.name" placeholder="name" /></span>
+</div>
