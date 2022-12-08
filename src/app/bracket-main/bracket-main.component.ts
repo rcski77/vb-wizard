@@ -18,6 +18,7 @@ export class BracketMainComponent implements OnInit {
 
   teams: Team[] = []; //create array of default team list
 
+  //use service to get team list
   getTeams(): void {
     this.teamService.getTeams().subscribe((teams) => (this.teams = teams));
   }
@@ -76,16 +77,18 @@ export class BracketMainComponent implements OnInit {
     }
 
     //create winner dependent matches
-    switch (size) {
-      case 4:
-        this.matches[2] = {
-          id: 3,
-          team1: { name: 'Winner of Match 1' },
-          team2: { name: 'Winner of Match 2' },
-          winner: null,
-        };
+    let match = 1;
+    for (let i = size / 2; i < size; i++) {
+      let temp: Match = {
+        id: i + 1,
+        team1: { name: `Winner of Match ${match}` },
+        team2: { name: `Winner of Match ${match + 1}` },
+        winner: null,
+      };
+      this.matches.push(temp);
+      match = match + 2;
     }
-  }
+  } //end generateMatches
 
   setColumns(size: number): void {
     this.col1 = []; //clear array
@@ -97,22 +100,15 @@ export class BracketMainComponent implements OnInit {
       this.col4.push(this.matches[i]);
     }
     for (let i = 0; i < 4; i++) {
-      this.col3.push(this.matches[i]);
+      this.col3.push(this.matches[size - 8 + i]);
     }
     for (let i = 0; i < 2; i++) {
-      this.col2.push(this.matches[i]);
+      this.col2.push(this.matches[size - 4 + i]);
     }
     for (let i = 0; i < 1; i++) {
-      switch (size) {
-        case 4:
-          this.col1.push(this.matches[2]); //match 3
-          break;
-        default:
-          this.col1.push(this.matches[i]);
-          break;
-      }
+      this.col1.push(this.matches[size - 2]);
     }
-  }
+  } //end setColumns
 
   setWinner(match: Match, team: number): void {
     let index = match.id;
@@ -123,13 +119,13 @@ export class BracketMainComponent implements OnInit {
       match.winner = match.team2;
     }
 
-    switch (this.bracketSize.teams) {
-      case 4:
-        if (index % 2 == 1) {
-          this.matches[index + (index % 2)].team1 = match.winner;
-        } else {
-          this.matches[index + (index % 2)].team2 = match.winner;
-        }
+    //set winner of subsequent matches
+    if (index % 2 == 1) {
+      this.matches[Math.ceil((index + this.bracketSize.teams) / 2) - 1].team1 =
+        match.winner;
+    } else {
+      this.matches[Math.floor((index + this.bracketSize.teams) / 2) - 1].team2 =
+        match.winner;
     }
-  }
-}
+  } //end setWinner
+} //end component class
